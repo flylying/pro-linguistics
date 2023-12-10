@@ -9,4 +9,9 @@ class BertVectorizer:
 
 		if self._has_gpu:
 			self._device = torch.device('cuda')
-			self._num_devices = 
+			self._num_devices = torch.cuda.device_count()
+			self._model.to(self._device)
+
+		else:
+			self._device = torch.device('cpu')
+			self._num_devi
