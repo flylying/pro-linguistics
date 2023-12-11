@@ -14,4 +14,10 @@ class BertVectorizer:
 
 		else:
 			self._device = torch.device('cpu')
-			self._num_devi
+			self._num_devices = torch.get_num_threads()
+
+		self._model.eval()
+
+	def __repr__(self):
+		device = ('GPU' if self._has_gpu else 'CPU')
+		return 
