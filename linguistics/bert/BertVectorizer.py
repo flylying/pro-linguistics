@@ -20,4 +20,9 @@ class BertVectorizer:
 
 	def __repr__(self):
 		device = ('GPU' if self._has_gpu else 'CPU')
-		return 
+		return f'<{self.__class__.__name__}_{device}x{self._num_devices}>'
+
+	def __str__(self):
+		return repr(self)
+
+	def vectorize(self, text, device=None, get_n
