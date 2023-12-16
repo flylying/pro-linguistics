@@ -25,4 +25,10 @@ class BertVectorizer:
 	def __str__(self):
 		return repr(self)
 
-	def vectorize(self, text, device=None, get_n
+	def vectorize(self, text, device=None, get_num_tokens=False):
+		"""
+		:type text: str or list[str] or Series
+		:type device: str or NoneType
+		:rtype: numpy.array
+		"""
+		ret
