@@ -31,4 +31,4 @@ class BertVectorizer:
 		:type device: str or NoneType
 		:rtype: numpy.array
 		"""
-		ret
+		return self._model.vectorize(text=text, device=device or self._device, get_num_tokens=get_num_tokens)
