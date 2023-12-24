@@ -14,4 +14,14 @@ class DocumentObject:
 		return self.document.nlp
 
 	@property
-	def document(self)
+	def document(self):
+		"""
+		:rtype: Document
+		"""
+		return self._document
+
+	def __repr__(self):
+		return self._obj.__repr__()
+
+	def __str__(self):
+		return
