@@ -24,4 +24,11 @@ class DocumentObject:
 		return self._obj.__repr__()
 
 	def __str__(self):
-		return
+		return self._obj.__str__()
+
+	def graph_str(self):
+		return trim(string=str(self), max_length=50, cut_from='middle')
+
+	@property
+	def id(self):
+		ret
