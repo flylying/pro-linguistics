@@ -31,4 +31,10 @@ class DocumentObject:
 
 	@property
 	def id(self):
-		ret
+		return None
+
+	def __eq__(self, other):
+		return self.id == other.id
+
+	def __ne__(self, other):
+		return self.id != other.id
