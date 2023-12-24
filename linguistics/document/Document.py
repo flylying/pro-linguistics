@@ -275,3 +275,105 @@ class Document:
 					name=str(entity.id), label=f'{entity.graph_str()}',
 					style=entity_style
 				)
+				# connect entity to its tokens
+				for token in entity.tokens:
+					self._entity_graph.connect(start=str(token.id), end=str(entity.id))
+
+			# add entity_chunks to the graph
+			for entity_chunk in self.entity_chunks:
+				self._entity_graph.add_node(
+					name=str(entity_chunk.id), label=f'{entity_chunk.graph_str()}',
+					style=entity_chunk_style
+				)
+
+				# connect entity_chunk to its entities
+				for entity in entity_chunk.entities:
+					self._entity_graph.connect(start=str(entity.id), end=str(entity_chunk.id))
+
+		return self._entity_graph
+
+	@property
+	def syntax_graph(self):
+		"""
+		:rtype: Graph
+		"""
+		sentence_style = {'text_size': 7, 'shape': 'rect', 'shape_style': '"rounded, filled"'}
+		if self._syntax_graph is None:
+			self._syntax_graph = Graph(ordering=False)
+
+			# add sentences to the graph
+			for sentence in self.sentences:
+				self._syntax_graph.add_node(
+					name=str(sentence.id),
+					label=f'{sentence.graph_str()}\n(sentence)',
+					style=sentence_style
+				)
+
+			for token in self.tokens:
+				self._syntax_graph.add_node(name=str(token.id), label=token.graph_str())
+
+			# connect tokens to sentences
+			for sentence in self.sentences:
+				for token in sentence.tokens:
+					# only connect root tokens (tokens without parents) to the sentence
+					if len(token.parents) < 1:
+						self._syntax_graph.connect(start=str(sentence.id), end=str(token.id))
+
+			for token in self.tokens:
+				for child in token.children:
+					dependency_label = str(child.dependency).replace('_', '\n')
+					self._syntax_graph.connect(start=str(token.id), end=str(child.id), label=dependency_label)
+		return self._syntax_graph
+
+	def __add__(self, other):
+		"""
+		:type other: Document or Token
+		:rtype: Document
+		"""
+		return self.__class__(text=str(self).rstrip()+' '+str(other).lstrip())
+
+	def bind(self, chunk_type='entity_chunk'):
+		"""
+		:param str chunk_type: can be one of entity_chunk, noun_chunk, or entity
+		:rtype: list[Token or EntityChunk or NounChunk or Entity]
+		"""
+		if chunk_type == 'entity_chunk':
+			chunks = [x for x in self.tokens if x.entity_chunk is None] + self.entity_chunks
+		elif chunk_type == 'entity':
+			chunks = [x for x in self.tokens if x.entity is None] + self.entities
+		elif chunk_type == 'noun_chunk':
+			chunks = [x for x in self.tokens if x.noun_chunk is None] + self.noun_chunks
+		else:
+			raise ValueError(f'chunk_type "{chunk_type}" is not acceptable!')
+		return sorted(chunks, key=lambda x: x.start)
+
+	def mask_entity_types(self, entity_types, chunk_type='entity_chunk'):
+		"""
+		:param list[str] or list[EntityType] or str entity_types: entity types to be masked, it can be 'all'
+		:param str chunk_type: can be one of entity_chunk, noun_chunk, or entity
+		:rtype: str
+		"""
+		if entity_types == 'all':
+			pass
+		else:
+			entity_types = [EntityType(name=x) if not isinstance(x, EntityType) else x for x in entity_types]
+		chunks = self.bind(chunk_type=chunk_type)
+		strings = []
+		for chunk in chunks:
+			string = str(chunk)
+			if (chunk_type == 'entity_chunk' and isinstance(chunk, EntityChunk)) or \
+				(chunk_type == 'noun_chunk' and isinstance(chunk, NounChunk)):
+				for entity_type in sorted(chunk.entity_types):
+					if entity_types == 'all':
+						string = f'<{entity_type.long_name.upper()}>'
+						break
+					elif entity_type in entity_types:
+						string = f'<{entity_type.long_name.upper()}>'
+						break
+			elif chunk_type == 'entity' and isinstance(chunk, Entity):
+				if entity_types == 'all':
+					string = f'<{chunk.entity_type.long_name.upper()}>'
+				elif chunk.entity_type in entity_types:
+					string = f'<{chunk.entity_type.long_name.upper()}>'
+			strings.append(string)
+		return ' '.join(join_punctuation(seq=[str(x) for x in strings]))
