@@ -136,3 +136,142 @@ class Document:
 	def get_sentences(self, method='spacy', return_type='Sentence'):
 
 		"""
+		:param str method: can be spacy, regex
+		:param str return_type: if method is spacy, return_type can be str or Sentence
+		:rtype: list[str] or list[Sentence]
+		"""
+
+		return_type = return_type.lower()
+
+		sentence_method = method.lower()
+		self._sentences_method = sentence_method
+
+		if sentence_method == 'spacy':
+			self._sentences = [Sentence(obj=x, document=self) for x in self.doc.sents]
+			'''
+			elif sentence_method == 'nltk':
+				self._sentences = nltk.sent_tokenize(text=self.text)
+			'''
+		elif sentence_method == 'regex':
+			self._sentences = split_into_sentences(text=self.text)
+
+		else:
+			raise ValueError(f'method:{method} is unknown!')
+
+		if return_type == 'str':
+			return [str(x) for x in self._sentences]
+
+		elif return_type == 'document':
+			return [Document(text=str(x)) for x in self._sentences]
+
+		else:
+			return self._sentences
+
+	@property
+	def tokens(self):
+
+		"""
+		:rtype: list[Token]
+		"""
+		if self._tokens is None:
+			self.tokenize()
+		return self._tokens
+
+	@property
+	def entities(self):
+		"""
+		:rtype: list[Entity]
+		"""
+		if self._entities is None:
+			self.tokenize()
+		return self._entities
+
+	@property
+	def noun_chunks(self):
+		"""
+		:rtype: list[NounChunk]
+		"""
+		if self._noun_chunks is None:
+			self.tokenize()
+		return self._noun_chunks
+
+	@property
+	def entity_chunks(self):
+		"""
+		:rtype: list[EntityChunk]
+		"""
+		if self._entity_chunks is None:
+			self.tokenize()
+		return self._entity_chunks
+
+	@property
+	def entity_graph(self):
+		"""
+		:rtype: Graph
+		"""
+		sentence_style = {'text_size': 7, 'shape': 'rect', 'shape_style': '"rounded, filled"'}
+		noun_chunk_style = {
+			'fill_colour': 'lightpink', 'text_colour': 'black', 'text_size': 8,
+			'shape': 'rect', 'shape_style': '"rounded, filled"'
+		}
+
+		entity_style = {'fill_colour': 'gold3', 'text_colour': 'black'}
+		entity_chunk_style = {'fill_colour': 'gold', 'text_colour': 'black'}
+
+		if self._entity_graph is None:
+			self._entity_graph = Graph(ordering=False)
+			# add sentences to the graph
+			if len(self.sentences) > 1:
+				self._entity_graph.add_node(
+					name=str(self.id), label=f'{self.graph_str()}\n({len(self.sentences)} sentences)',
+					style={'text_size': 7, 'shape': 'rect', 'shape_style': '"rounded, filled"'}
+				)
+				for i, sentence in enumerate(self.sentences):
+					self._entity_graph.add_node(
+						name=str(sentence.id), label=f'{sentence.graph_str()}\n(sentence {i+1})',
+						style=sentence_style
+					)
+					self._entity_graph.connect(start=str(self.id), end=str(sentence.id))
+			else:
+				for sentence in self.sentences:
+					self._entity_graph.add_node(
+						name=str(sentence.id), label=f'{sentence.graph_str()}\n(one sentence)',
+						style=sentence_style
+					)
+
+			# add tokens to the graph
+			for token in self.tokens:
+				self._entity_graph.add_node(
+					name=str(token.id), label=f'{token.graph_str()}',
+					style={'text_size': 8, 'shape': 'rect', 'shape_style': '"rounded, filled"'}
+				)
+
+			# add noun_chunks to the graph
+			for noun_chunk in self.noun_chunks:
+				self._entity_graph.add_node(
+					name=str(noun_chunk.id), label=f'{noun_chunk.graph_str()}',
+					style=noun_chunk_style
+				)
+
+				# noun_chunk to its tokens
+				for token in noun_chunk.tokens:
+					self._entity_graph.connect(start=str(token.noun_chunk.id), end=str(token.id))
+
+			# connect tokens to sentences (only the ones that don't have a noun chunk parent)
+			for sentence in self.sentences:
+				noun_chunks_connected_to_this_sentence = []
+				for token in sentence.tokens:
+					if not token.noun_chunk:
+						self._entity_graph.connect(start=str(sentence.id), end=str(token.id))
+					else:
+						noun_chunk = token.noun_chunk
+						if noun_chunk not in noun_chunks_connected_to_this_sentence:
+							self._entity_graph.connect(start=str(sentence.id), end=str(noun_chunk.id))
+							noun_chunks_connected_to_this_sentence.append(noun_chunk)
+
+			# add entities to the graph
+			for entity in self.entities:
+				self._entity_graph.add_node(
+					name=str(entity.id), label=f'{entity.graph_str()}',
+					style=entity_style
+				)
