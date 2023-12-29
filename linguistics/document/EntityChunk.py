@@ -10,4 +10,7 @@ class EntityChunk(TokenSpan):
 		"""
 		:type entity: Entity
 		"""
-		super().__init__(obj=None, docu
+		super().__init__(obj=None, document=entity.document)
+		self._start = min(
+			[entity.start] + [
+				noun_chunk.start for noun_chunk in entity.parent_noun_chunks if 
