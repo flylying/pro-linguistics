@@ -18,4 +18,7 @@ class EntityChunk(TokenSpan):
 		)
 		self._end = max(
 			[entity.end] + [
-				noun_chunk.end for noun_chunk in entity.paren
+				noun_chunk.end for noun_chunk in entity.parent_noun_chunks if not noun_chunk.is_sentence
+			]
+		)
+		self._entities = remove_list_duplicates([token.entity for t
