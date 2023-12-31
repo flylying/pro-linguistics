@@ -13,4 +13,9 @@ class EntityChunk(TokenSpan):
 		super().__init__(obj=None, document=entity.document)
 		self._start = min(
 			[entity.start] + [
-				noun_chunk.start for noun_chunk in entity.parent_noun_chunks if 
+				noun_chunk.start for noun_chunk in entity.parent_noun_chunks if not noun_chunk.is_sentence
+			]
+		)
+		self._end = max(
+			[entity.end] + [
+				noun_chunk.end for noun_chunk in entity.paren
