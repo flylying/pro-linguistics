@@ -21,4 +21,11 @@ class EntityChunk(TokenSpan):
 				noun_chunk.end for noun_chunk in entity.parent_noun_chunks if not noun_chunk.is_sentence
 			]
 		)
-		self._entities = remove_list_duplicates([token.entity for t
+		self._entities = remove_list_duplicates([token.entity for token in self.tokens if token.entity])
+		for token in self.tokens:
+			token._entity_chunk = self
+
+	@property
+	def entities(self):
+		"""
+		
