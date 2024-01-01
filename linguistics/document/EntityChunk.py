@@ -28,4 +28,13 @@ class EntityChunk(TokenSpan):
 	@property
 	def entities(self):
 		"""
-		
+		:rtype: list[Entity]
+		"""
+		return self._entities
+
+	@property
+	def start(self):
+		"""
+		:rtype: int
+		"""
+		return self._star
