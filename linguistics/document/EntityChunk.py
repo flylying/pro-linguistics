@@ -37,4 +37,18 @@ class EntityChunk(TokenSpan):
 		"""
 		:rtype: int
 		"""
-		return self._star
+		return self._start
+
+	@property
+	def end(self):
+		"""
+		:rtype: int
+		"""
+		return self._end
+
+	@property
+	def id(self):
+		"""
+		:rtype: tuple
+		"""
+		return self.do
