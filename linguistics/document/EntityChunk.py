@@ -51,4 +51,7 @@ class EntityChunk(TokenSpan):
 		"""
 		:rtype: tuple
 		"""
-		return self.do
+		return self.document.id, 'entity_chunk', self.start, self.end
+
+	# def __str__(self):
+	#	return ' '.join(join_punctuation(seq=[str(x) for x in self.token
