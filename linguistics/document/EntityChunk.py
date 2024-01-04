@@ -54,4 +54,17 @@ class EntityChunk(TokenSpan):
 		return self.document.id, 'entity_chunk', self.start, self.end
 
 	# def __str__(self):
-	#	return ' '.join(join_punctuation(seq=[str(x) for x in self.token
+	#	return ' '.join(join_punctuation(seq=[str(x) for x in self.tokens]))
+
+	#def __repr__(self):
+	#	return str(self)
+
+	@property
+	def text(self):
+		"""
+		:rtype: str
+		"""
+		return str(self)
+
+	@property
+	def
