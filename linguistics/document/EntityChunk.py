@@ -67,4 +67,8 @@ class EntityChunk(TokenSpan):
 		return str(self)
 
 	@property
-	def
+	def entity_types(self):
+		"""
+		:rtype: list[EntityType]
+		"""
+		return remove_list_duplicates([entity.entity_type for entity in sel
