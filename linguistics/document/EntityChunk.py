@@ -71,4 +71,13 @@ class EntityChunk(TokenSpan):
 		"""
 		:rtype: list[EntityType]
 		"""
-		return remove_list_duplicates([entity.entity_type for entity in sel
+		return remove_list_duplicates([entity.entity_type for entity in self.entities])
+
+	@property
+	def main_entity_type(self):
+		"""
+		:rtype EntityType
+		"""
+		return sorted(self.entity_types)[0]
+
+	def g
