@@ -80,4 +80,8 @@ class EntityChunk(TokenSpan):
 		"""
 		return sorted(self.entity_types)[0]
 
-	def g
+	def graph_str(self):
+		"""
+		:rtype: str
+		"""
+		return f"{self}\n({str(self.main_entity_type).replace('_', ' ')})"
