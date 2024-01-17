@@ -15,4 +15,10 @@ class Linguist:
 		else:
 			self._gpu = False
 
-		
+		self._nlp = spacy.load(spacy_core)
+		self._wikipedia = wikipedia_api
+
+	@property
+	def nlp(self):
+		"""
+		:
