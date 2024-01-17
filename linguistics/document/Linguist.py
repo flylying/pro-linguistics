@@ -9,4 +9,10 @@ class Linguist:
 		if prefer_gpu is None:
 			self._gpu = spacy.prefer_gpu()
 		elif prefer_gpu:  # explicit True
-			self._gp
+			self._gpu = spacy.prefer_gpu()
+			if not self._gpu:
+				warnings.warn('GPU is not working!')
+		else:
+			self._gpu = False
+
+		
