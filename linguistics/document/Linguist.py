@@ -21,4 +21,12 @@ class Linguist:
 	@property
 	def nlp(self):
 		"""
-		:
+		:rtype: English
+		"""
+		return self._nlp
+
+	def create_document(self, text):
+		doc = self.nlp(text)
+		return Document(_doc=doc, nlp=self.nlp)
+
+	def analyze(
