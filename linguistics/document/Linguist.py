@@ -29,4 +29,7 @@ class Linguist:
 		doc = self.nlp(text)
 		return Document(_doc=doc, nlp=self.nlp)
 
-	def analyze(
+	def analyze(self, text):
+		return self.create_document(text=text)
+
+
