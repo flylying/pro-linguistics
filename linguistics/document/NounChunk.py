@@ -16,3 +16,10 @@ class NounChunk(TokenSpan):
 		:rtype: list[Entity]
 		"""
 		return [e for e in self.document.entities if e.start >= self.start and e.end <= self.end]
+
+	@property
+	def parent_entities(self):
+		"""
+		:rtype: list[Entity]
+		"""
+		return [e for e in self.document.entities if 
