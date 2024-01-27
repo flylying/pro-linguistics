@@ -33,4 +33,8 @@ class NounChunk(TokenSpan):
 
 	@property
 	def id(self):
-		return self.document.id, 'noun_chun
+		return self.document.id, 'noun_chunk', self.start, self.end
+
+	def graph_str(self):
+		if self.entities:
+			return f"{self}\n({str(self.main_entity_type).re
