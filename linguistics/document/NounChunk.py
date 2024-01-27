@@ -29,4 +29,8 @@ class NounChunk(TokenSpan):
 		"""
 		:rtype: list[Entity]
 		"""
-		return remove_
+		return remove_list_duplicates(self.child_entities + self.parent_entities)
+
+	@property
+	def id(self):
+		return self.document.id, 'noun_chun
