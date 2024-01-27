@@ -37,4 +37,10 @@ class NounChunk(TokenSpan):
 
 	def graph_str(self):
 		if self.entities:
-			return f"{self}\n({str(self.main_entity_type).re
+			return f"{self}\n({str(self.main_entity_type).replace('_', ' ')})"
+		else:
+			return f'{self}'
+
+	@property
+	def entity_types(self):
+		return [entity.entity_type for e
