@@ -50,4 +50,4 @@ class NounChunk(TokenSpan):
 		return sorted(self.entity_types)[0]
 
 	def is_proper(self):
-		return se
+		return self.has(part_of_speech='proper_noun')
