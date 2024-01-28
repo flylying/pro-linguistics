@@ -43,4 +43,11 @@ class NounChunk(TokenSpan):
 
 	@property
 	def entity_types(self):
-		return [entity.entity_type for e
+		return [entity.entity_type for entity in self.entities]
+
+	@property
+	def main_entity_type(self):
+		return sorted(self.entity_types)[0]
+
+	def is_proper(self):
+		return se
