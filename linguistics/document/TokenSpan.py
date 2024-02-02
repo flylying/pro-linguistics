@@ -10,4 +10,12 @@ class TokenSpan(DocumentObject):
 
 	def __str__(self):
 		character_range = self.character_range
-		return self.document.text[character_range[0
+		return self.document.text[character_range[0]: character_range[1]]
+		# return ' '.join([str(x) for x in self.tokens])
+
+	def __repr__(self):
+		return str(self)
+
+	@property
+	def obj(self):
+		"
