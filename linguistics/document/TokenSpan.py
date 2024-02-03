@@ -29,4 +29,12 @@ class TokenSpan(DocumentObject):
 		:rtype: int
 		"""
 		try:
-			return self._st
+			return self._start
+		except AttributeError:
+			self._start = self.obj.start
+		return self._start
+
+	@property
+	def end(self):
+		"""
+		:rtype: i
