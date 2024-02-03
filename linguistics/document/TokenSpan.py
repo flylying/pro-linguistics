@@ -18,4 +18,15 @@ class TokenSpan(DocumentObject):
 
 	@property
 	def obj(self):
-		"
+		"""
+		:rtype: tokens.Span
+		"""
+		return self._obj
+
+	@property
+	def start(self):
+		"""
+		:rtype: int
+		"""
+		try:
+			return self._st
