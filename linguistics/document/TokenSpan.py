@@ -37,4 +37,13 @@ class TokenSpan(DocumentObject):
 	@property
 	def end(self):
 		"""
-		:rtype: i
+		:rtype: int
+		"""
+		try:
+			return self._end
+		except AttributeError:
+			self._end = self.obj.end
+		return self._end
+
+	@property
+	def end_except_punctuation(s
