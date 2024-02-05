@@ -53,4 +53,9 @@ class TokenSpan(DocumentObject):
 		try:
 			return self._end_except_punctuation
 		except AttributeError:
-			self._end_except_punctuation = max([
+			self._end_except_punctuation = max([x.index for x in self.tokens if not x.is_punctuation])
+		return self._end_except_punctuation
+
+	@property
+	def id(self):
+		return (self.d
