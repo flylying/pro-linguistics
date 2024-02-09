@@ -58,4 +58,14 @@ class TokenSpan(DocumentObject):
 
 	@property
 	def id(self):
-		return (self.d
+		return (self.document.id, 'span', self.start, self.end)
+
+	@property
+	def text(self):
+		"""
+		:rtype: str
+		"""
+		return self.obj.text
+
+
+	@propert
