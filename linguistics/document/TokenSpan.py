@@ -76,4 +76,13 @@ class TokenSpan(DocumentObject):
 		return self.document.tokens[self.start:self.end]
 
 	@property
-	def las
+	def last_token(self):
+		"""
+		:rtype: .Document.Token
+		"""
+		return self.tokens[-1]
+
+	@property
+	def is_sentence(self):
+		try:
+			return sel
