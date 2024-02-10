@@ -90,4 +90,8 @@ class TokenSpan(DocumentObject):
 		except AttributeError:
 			self._is_sentence = False
 			for sentence in self.document.sentences:
-				if senten
+				if sentence.start == self.start and sentence.end_except_punctuation == self.end_except_punctuation:
+					self._is_sentence = True
+					break
+
+		return
