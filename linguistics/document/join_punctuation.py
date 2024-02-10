@@ -12,4 +12,5 @@ def join_punctuation(seq, characters='.,;?!'):
 			yield current
 			current = nxt
 
-	yield cu
+	yield current
+
