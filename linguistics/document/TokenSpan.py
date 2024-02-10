@@ -94,4 +94,7 @@ class TokenSpan(DocumentObject):
 					self._is_sentence = True
 					break
 
-		return
+		return self._is_sentence
+
+	def has(self, part_of_speech):
+		return any([token.part_of_speech == part_of_speech for tok
