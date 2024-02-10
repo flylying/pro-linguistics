@@ -97,4 +97,4 @@ class TokenSpan(DocumentObject):
 		return self._is_sentence
 
 	def has(self, part_of_speech):
-		return any([token.part_of_speech == part_of_speech for tok
+		return any([token.part_of_speech == part_of_speech for token in self.tokens])
