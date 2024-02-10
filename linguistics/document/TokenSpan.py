@@ -85,4 +85,9 @@ class TokenSpan(DocumentObject):
 	@property
 	def is_sentence(self):
 		try:
-			return sel
+			return self._is_sentence
+
+		except AttributeError:
+			self._is_sentence = False
+			for sentence in self.document.sentences:
+				if senten
