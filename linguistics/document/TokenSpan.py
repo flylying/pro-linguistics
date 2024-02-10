@@ -68,4 +68,12 @@ class TokenSpan(DocumentObject):
 		return self.obj.text
 
 
-	@propert
+	@property
+	def tokens(self):
+		"""
+		:rtype: list[.Document.Token]
+		"""
+		return self.document.tokens[self.start:self.end]
+
+	@property
+	def las
