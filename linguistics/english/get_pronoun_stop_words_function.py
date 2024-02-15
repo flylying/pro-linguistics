@@ -27,3 +27,20 @@ STOP_WORDS = {
 	'whatever', 'when', 'whence', 'whenever', 'where', 'whereafter', 'whereas', 'whereby', 'wherein', 'whereupon',
 	'wherever', 'whether', 'which', 'while', 'whither', 'who', 'whoever', 'whole', 'whom', 'whose', 'why', 'will',
 	'with', 'within', 'without', 'would', 'yet', 'you', 'your', 'yours', 'yourself', 'yourselves'
+}
+
+
+PRONOUND_STOP_WORDS = {
+	'i', 'me', 'my', 'myself', 'we', 'us', 'our', 'ours', 'ourselves',
+	'you', 'your', 'yours', 'yourself', 'yourselves',
+	'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself',
+	'it', 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves',
+	'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those'
+}
+
+
+def get_stop_words(include_pronoun_forms=True):
+	if include_pronoun_forms:
+		return STOP_WORDS
+	else:
+		return STOP_WORDS - PRONOUND_STOP_WORDS
