@@ -30,4 +30,9 @@ class GoogleCloud:
 		self._extract_syntax = extract_syntax
 		self._cache = cache
 		if self._cache:
-			self._cached_analyze = self._c
+			self._cached_analyze = self._cache.make_cached(
+				function=self._analyze, id='google_cloud_analyze_function',
+				sub_directory='analyze'
+			)
+		else:
+			self.
