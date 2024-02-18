@@ -11,4 +11,11 @@ class GoogleCloud:
 			extract_entities=True,
 			extract_sentiment=True,
 			extract_syntax=True,
-			
+			cache=None
+	):
+		"""
+		:param str api_key:
+		:param str language:
+		:param bool standardize:
+		:param bool extract_entities:
+		:p
