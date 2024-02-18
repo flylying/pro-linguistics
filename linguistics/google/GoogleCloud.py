@@ -41,4 +41,6 @@ class GoogleCloud:
 			self, text, language, standardize, extract_entities,
 			extract_sentiment, extract_syntax
 	):
-	
+		return analyze(
+			text=text, api_key=self._api_key, language=language, standardize=standardize,
+			extract_entities
