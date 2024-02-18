@@ -18,4 +18,9 @@ class GoogleCloud:
 		:param str language:
 		:param bool standardize:
 		:param bool extract_entities:
-		:p
+		:param bool extract_sentiment:
+		:param bool extract_syntax:
+		:param disk.Cache.Cache cache:
+		"""
+		self._api_key = api_key
+		self._la
