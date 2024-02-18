@@ -26,4 +26,8 @@ class GoogleCloud:
 		self._language = language[:2].lower()
 		self._standardize = standardize
 		self._extract_entities = extract_entities
-		self._extract_
+		self._extract_sentiment = extract_sentiment
+		self._extract_syntax = extract_syntax
+		self._cache = cache
+		if self._cache:
+			self._cached_analyze = self._c
