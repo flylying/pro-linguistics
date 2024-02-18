@@ -23,4 +23,7 @@ class GoogleCloud:
 		:param disk.Cache.Cache cache:
 		"""
 		self._api_key = api_key
-		self._la
+		self._language = language[:2].lower()
+		self._standardize = standardize
+		self._extract_entities = extract_entities
+		self._extract_
