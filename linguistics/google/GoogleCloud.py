@@ -35,4 +35,10 @@ class GoogleCloud:
 				sub_directory='analyze'
 			)
 		else:
-			self.
+			self._cached_analyze = self._analyze
+
+	def _analyze(
+			self, text, language, standardize, extract_entities,
+			extract_sentiment, extract_syntax
+	):
+	
