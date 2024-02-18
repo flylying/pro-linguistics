@@ -43,4 +43,8 @@ class GoogleCloud:
 	):
 		return analyze(
 			text=text, api_key=self._api_key, language=language, standardize=standardize,
-			extract_entities
+			extract_entities=extract_entities, extract_sentiment=extract_sentiment,
+			extract_syntax=extract_syntax
+		)
+
+	def analyze(self, text):
