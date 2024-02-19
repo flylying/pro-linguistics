@@ -52,4 +52,9 @@ class GoogleCloud:
 			text=text,
 			language=self._language,
 			standardize=self._standardize,
-			extract_entities=self._ex
+			extract_entities=self._extract_entities,
+			extract_sentiment=self._extract_sentiment,
+			extract_syntax=self._extract_syntax
+		)
+
+	def create_documen
