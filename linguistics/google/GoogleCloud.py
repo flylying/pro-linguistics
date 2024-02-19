@@ -48,3 +48,8 @@ class GoogleCloud:
 		)
 
 	def analyze(self, text):
+		return self._cached_analyze(
+			text=text,
+			language=self._language,
+			standardize=self._standardize,
+			extract_entities=self._ex
