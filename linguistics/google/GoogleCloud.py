@@ -57,4 +57,7 @@ class GoogleCloud:
 			extract_syntax=self._extract_syntax
 		)
 
-	def create_documen
+	def create_document(self, text):
+		analysis = self.analyze(text=text)
+		return GoogleDocument(cloud=self, _analysis=analysis)
+
