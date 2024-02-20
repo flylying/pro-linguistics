@@ -127,3 +127,70 @@ class GoogleDocument:
 		return self._sentiment
 
 	@property
+	def language(self):
+		if self._language is None:
+			self.tokenize()
+		return self._language
+
+	def graph_str(self):
+		return '\n'.join([sentence.graph_str() for sentence in self.sentences])
+
+	@property
+	def graph(self):
+		"""
+		:rtype: Graph
+		"""
+		sentence_style = {'text_size': 7, 'shape': 'rect', 'style': '"rounded, filled"'}
+		entity_style = {'fill_colour': 'gold3', 'text_colour': 'black'}
+		mention_style = {'fill_colour': 'gold', 'text_colour': 'black'}
+
+		if self._graph is None:
+			self._graph = Graph()
+			for token in self.tokens:
+				self._graph.add_node(name=str(token.id), label=token.graph_str())
+
+			if len(self._sentences) > 1:
+				self._graph.add_node(
+					name=str(self.id),
+					label=f'{self.graph_str()}\n({len(self.sentences)} sentences)',
+					style=sentence_style
+				)
+
+				for index, sentence in enumerate(self.sentences):
+					self._graph.add_node(
+						name=str(sentence.id),
+						label=f'{sentence.graph_str()}\n(sentence {index+1})',
+						style=sentence_style
+					)
+					self._graph.connect(start=str(self.id), end=str(sentence.id))  # document --> sentence
+					for token in sentence.tokens:
+						self._graph.connect(start=str(sentence.id), end=str(token.id))  # sentence --> token
+
+			else:
+				self._graph.add_node(
+					name=str(self.id),
+					label=f'{self.graph_str()}\n({len(self.sentences)} sentence)',
+					style=sentence_style
+				)
+				for sentence in self.sentences:
+					for token in sentence.tokens:
+						self._graph.connect(start=str(self.id), end=str(token.id))  # document --> token
+
+			for entity in self.entities:
+				self._graph.add_node(
+					name=str(entity.id),
+					label=entity.graph_str(),
+					style=entity_style
+				)
+
+				for index, mention in enumerate(entity.mentions):
+					self._graph.add_node(
+						name=str(mention.id),
+						label=f'mention {index+1}',
+						style=mention_style
+					)
+					self._graph.connect(start=str(mention.id), end=str(entity.id))  # entity <-- mention
+					for token in mention.tokens:
+						self._graph.connect(start=str(token.id), end=str(mention.id))  # mention <-- token
+
+		return self._graph
