@@ -12,4 +12,14 @@ class GoogleDocumentObject:
 		self._begin = begin
 		self._end = end
 
-	
+	@property
+	def begin(self):
+		return self._begin
+
+	@property
+	def end(self):
+		return self._end
+
+	def __lt__(self, other):
+		"""
+		:
