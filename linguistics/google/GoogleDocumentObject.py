@@ -22,4 +22,9 @@ class GoogleDocumentObject:
 
 	def __lt__(self, other):
 		"""
-		:
+		:type other: GoogleToken
+		:rtype: bool
+		"""
+		if self.begin < other.begin and self.end < other.end:
+			return True
+		elif self.begin
