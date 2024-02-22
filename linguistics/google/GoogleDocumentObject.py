@@ -27,4 +27,7 @@ class GoogleDocumentObject:
 		"""
 		if self.begin < other.begin and self.end < other.end:
 			return True
-		elif self.begin
+		elif self.begin >= other.begin and self.end >= other.end:
+			return False
+		else:
+			raise ValueError(f'Token "{self}" and "{other}" overlap!
