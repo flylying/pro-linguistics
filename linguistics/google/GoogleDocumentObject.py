@@ -30,4 +30,12 @@ class GoogleDocumentObject:
 		elif self.begin >= other.begin and self.end >= other.end:
 			return False
 		else:
-			raise ValueError(f'Token "{self}" and "{other}" overlap!
+			raise ValueError(f'Token "{self}" and "{other}" overlap!')
+
+	def __gt__(self, other):
+		return other.__lt__(self)
+
+	def __le__(self, other):
+		return not self.__gt__(other)
+
+	def __g
