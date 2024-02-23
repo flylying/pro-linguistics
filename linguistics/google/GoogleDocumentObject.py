@@ -38,4 +38,10 @@ class GoogleDocumentObject:
 	def __le__(self, other):
 		return not self.__gt__(other)
 
-	def __g
+	def __ge__(self, other):
+		return not self.__lt__(other)
+
+	@property
+	def document(self):
+		"""
+		:rtype: .GoogleDocument.GoogleDocu
