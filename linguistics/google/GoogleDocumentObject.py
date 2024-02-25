@@ -52,4 +52,11 @@ class GoogleDocumentObject:
 		return self._dictionary.__str__()
 
 	def graph_str(self):
-		return trim(st
+		return trim(string=str(self), max_length=50, cut_from='middle')
+
+	@property
+	def id(self):
+		return None
+
+	def __eq__(self, other):
+		return self.id == 
