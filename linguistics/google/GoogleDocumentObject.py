@@ -59,4 +59,14 @@ class GoogleDocumentObject:
 		return None
 
 	def __eq__(self, other):
-		return self.id == 
+		return self.id == other.id
+
+	def __ne__(self, other):
+		return self.id != other.id
+
+	@property
+	def cloud(self):
+		"""
+		:rtype: .GoogleCloud.GoogleCloud
+		"""
+		return
