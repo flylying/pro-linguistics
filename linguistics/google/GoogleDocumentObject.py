@@ -69,4 +69,4 @@ class GoogleDocumentObject:
 		"""
 		:rtype: .GoogleCloud.GoogleCloud
 		"""
-		return
+		return self.document.cloud
