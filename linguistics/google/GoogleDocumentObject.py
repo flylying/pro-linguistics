@@ -44,4 +44,12 @@ class GoogleDocumentObject:
 	@property
 	def document(self):
 		"""
-		:rtype: .GoogleDocument.GoogleDocu
+		:rtype: .GoogleDocument.GoogleDocument
+		"""
+		return self._document
+
+	def __str__(self):
+		return self._dictionary.__str__()
+
+	def graph_str(self):
+		return trim(st
