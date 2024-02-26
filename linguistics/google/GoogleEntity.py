@@ -108,3 +108,9 @@ class GoogleEntity:
 	def wikipedia_url(self):
 		"""
 		:rtype: str or NoneType
+		"""
+		return self._wikipedia_url
+
+	@property
+	def tokens(self):
+		return [token for mention in self.mentions for token in mention.tokens]
