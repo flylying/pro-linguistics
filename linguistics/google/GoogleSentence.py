@@ -2,4 +2,8 @@ from .GoogleTokenSpan import GoogleTokenSpan
 from .GoogleSentiment import GoogleSentiment
 
 
-class Googl
+class GoogleSentence(GoogleTokenSpan):
+	def __init__(self, dictionary, document):
+
+		text = dictionary.pop('text')
+		content = tex
