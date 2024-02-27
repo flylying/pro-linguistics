@@ -6,4 +6,8 @@ class GoogleSentence(GoogleTokenSpan):
 	def __init__(self, dictionary, document):
 
 		text = dictionary.pop('text')
-		content = tex
+		content = text.pop('content')
+		begin = text.pop('begin_offset')
+		end = begin + len(content)
+
+		super().__init__(dictionary=dictionary, document=document
