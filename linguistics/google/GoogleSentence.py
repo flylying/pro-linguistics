@@ -10,4 +10,8 @@ class GoogleSentence(GoogleTokenSpan):
 		begin = text.pop('begin_offset')
 		end = begin + len(content)
 
-		super().__init__(dictionary=dictionary, document=document
+		super().__init__(dictionary=dictionary, document=document, begin=begin, end=end)
+
+		self._text = content
+		sentiment = self._dictionary.pop('sentiment')
+		self._sentiment = 
