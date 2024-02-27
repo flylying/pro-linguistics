@@ -18,4 +18,12 @@ class GoogleSentence(GoogleTokenSpan):
 		self._index = None
 
 	@property
-	def text(se
+	def text(self):
+		return self._text
+
+	@property
+	def id(self):
+		return self.document.id, 'sentence', self._index
+
+	@property
+	def sentiment(
