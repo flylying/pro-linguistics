@@ -14,4 +14,8 @@ class GoogleSentence(GoogleTokenSpan):
 
 		self._text = content
 		sentiment = self._dictionary.pop('sentiment')
-		self._sentiment = 
+		self._sentiment = GoogleSentiment(score=sentiment.pop('score'), magnitude=sentiment.pop('magnitude'))
+		self._index = None
+
+	@property
+	def text(se
