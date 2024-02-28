@@ -26,4 +26,14 @@ class GoogleSentence(GoogleTokenSpan):
 		return self.document.id, 'sentence', self._index
 
 	@property
-	def sentiment(
+	def sentiment(self):
+		"""
+		:rtype: GoogleSentiment
+		"""
+		return self._sentiment
+
+	def __str__(self):
+		return self.text
+
+	def __repr__(self):
+		return st
