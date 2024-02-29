@@ -36,4 +36,9 @@ class GoogleSentence(GoogleTokenSpan):
 		return self.text
 
 	def __repr__(self):
-		return st
+		return str(self)
+
+
+
+
+
