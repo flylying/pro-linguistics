@@ -3,4 +3,10 @@ class GoogleSentiment:
 		self._score = score
 		self._magnitude = magnitude
 
-	@proper
+	@property
+	def score(self):
+		return self._score
+
+	@property
+	def magnitude(self):
+		return self._magnitude
