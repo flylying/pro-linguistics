@@ -6,4 +6,7 @@ class GoogleToken(GoogleDocumentObject):
 		text = dictionary.pop('text')
 		content = text.pop('content')
 		begin = text.pop('begin_offset')
-		end = beg
+		end = begin + len(content)
+		super().__init__(dictionary=dictionary, document=document, begin=begin, end=end)
+
+		self._text = conte
