@@ -9,4 +9,7 @@ class GoogleToken(GoogleDocumentObject):
 		end = begin + len(content)
 		super().__init__(dictionary=dictionary, document=document, begin=begin, end=end)
 
-		self._text = conte
+		self._text = content
+		self._grammer = self._dictionary.pop('part_of_speech')
+		self._part_of_speech = self._grammer.pop('tag', None)
+		self._number = self.
