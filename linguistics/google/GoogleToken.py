@@ -56,4 +56,7 @@ class GoogleToken(GoogleDocumentObject):
 
 	def graph_str(self):
 		if self.part_of_speech:
-	
+			part_of_speech = f"\n{self.part_of_speech.replace('_', ' ')}"
+		else:
+			part_of_speech = ''
+		return f"[{self.index}] '{se
