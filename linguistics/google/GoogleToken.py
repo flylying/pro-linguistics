@@ -26,3 +26,15 @@ class GoogleToken(GoogleDocumentObject):
 
 	@property
 	def begin(self):
+		return self._begin
+
+	@property
+	def end(self):
+		return self._end
+
+	@property
+	def text(self):
+		return self._text
+
+	@property
+	def par
