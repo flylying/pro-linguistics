@@ -12,4 +12,9 @@ class GoogleToken(GoogleDocumentObject):
 		self._text = content
 		self._grammer = self._dictionary.pop('part_of_speech')
 		self._part_of_speech = self._grammer.pop('tag', None)
-		self._number = self.
+		self._number = self._grammer.pop('number', None)
+		self._person = self._grammer.pop('person', None)
+		self._index = None
+
+	@property
+	def id(self
