@@ -59,4 +59,8 @@ class GoogleToken(GoogleDocumentObject):
 			part_of_speech = f"\n{self.part_of_speech.replace('_', ' ')}"
 		else:
 			part_of_speech = ''
-		return f"[{self.index}] '{se
+		return f"[{self.index}] '{self}'" + part_of_speech
+
+
+	def __eq__(self, other):
+		return self._text == other._text and self._begin == other._begin and self._end
