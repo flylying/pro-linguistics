@@ -37,4 +37,13 @@ class GoogleToken(GoogleDocumentObject):
 		return self._text
 
 	@property
-	def par
+	def part_of_speech(self):
+		return self._part_of_speech
+
+	@property
+	def number(self):
+		return self._number
+
+	@property
+	def person(self):
+		return self._p
