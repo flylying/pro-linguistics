@@ -17,4 +17,12 @@ class GoogleToken(GoogleDocumentObject):
 		self._index = None
 
 	@property
-	def id(self
+	def id(self):
+		return self.document.id, 'token', self._index
+
+	@property
+	def index(self):
+		return self._index
+
+	@property
+	def begin(self):
