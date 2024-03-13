@@ -19,4 +19,7 @@ class GoogleTokenSpan(GoogleDocumentObject):
 		:rtype: list[GoogleToken]
 		"""
 		if self._tokens is None:
-			self._tokens = 
+			self._tokens = [
+				token for token in self.document.tokens if token.begin >= self.begin and token.end <= self.end
+			]
+		return self._tokens
