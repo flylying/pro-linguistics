@@ -10,4 +10,13 @@ class GoogleTokenSpan(GoogleDocumentObject):
 	def __str__(self):
 		return ', '.join([str(token) for token in self.tokens])
 
-	def __repr__
+	def __repr__(self):
+		return str(self)
+
+	@property
+	def tokens(self):
+		"""
+		:rtype: list[GoogleToken]
+		"""
+		if self._tokens is None:
+			self._tokens = 
