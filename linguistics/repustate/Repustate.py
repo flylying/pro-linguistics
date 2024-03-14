@@ -55,3 +55,18 @@ class Repustate:
 					f'https://{self._server}/v4/{self._api_key}/topic.json',
 					verify=False, data={'text': text, 'topics': ','.join(topics) , 'lang': language}
 				)
+
+		elif isinstance(text, list):
+			if topics is None:
+				data = {f'text{i}': t for i, t in enumerate(text)}
+				data['lang'] = language
+				response = requests.post(
+					f'https://{self._server}/v4/{self._api_key}/bulk-score.json',
+					verify=False, data=data
+				)
+			else:
+				response = None
+		else:
+			response = None
+
+		return response.json()
