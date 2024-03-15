@@ -1,3 +1,6 @@
 
 from .convert_score_and_distance_functions import convert_distance_function_to_score_function
-from .con
+from .convert_score_and_distance_functions import create_weighted_similarity_function
+
+from .Word import Word
+from .Sentence import Sent
