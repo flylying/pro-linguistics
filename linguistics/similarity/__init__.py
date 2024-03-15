@@ -3,4 +3,8 @@ from .convert_score_and_distance_functions import convert_distance_function_to_s
 from .convert_score_and_distance_functions import create_weighted_similarity_function
 
 from .Word import Word
-from .Sentence import Sent
+from .Sentence import Sentence
+from .get_char_by_char_equality import get_char_by_char_equality
+
+from .get_similarity import get_similarities, get_similarity
+from .get_sentence_si
