@@ -10,4 +10,5 @@ from .get_similarity import get_similarities, get_similarity
 from .get_sentence_similarity import get_sentence_distance
 from .get_string_similarity import get_string_similarity
 
-from .find_most_similar import find_
+from .find_most_similar import find_most_similar
+
