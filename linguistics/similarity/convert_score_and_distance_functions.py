@@ -11,3 +11,5 @@ def convert_distance_function_to_score_function(function=get_edit_distance):
 def create_weighted_similarity_function(function=get_similarity, first_letter_weight=1):
 	def new_score_func(s1, s2):
 		original_result = function(s1, s2)
+		first_letter_result = float(s1[0]==s2[0])
+		return (original_result+first_letter_result*first_letter_weight)/(1.0+firs
