@@ -17,4 +17,9 @@ def find_most_similar_for_one_string(
 	:type case_sensitivity: float
 	:type first_char_weight: float
 	:type first_word_weight: float
-	:type
+	:type num_results: int
+	:type echo: int
+	:rtype: pd.DataFrame
+	"""
+	echo = max(0, echo)
+	num_results = max(1, min(num_results, len(candidate
