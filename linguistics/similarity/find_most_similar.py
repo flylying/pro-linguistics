@@ -13,4 +13,8 @@ def find_most_similar_for_one_string(
 	:type candidate_ids: list or NoneType
 	:type string_id: list or NoneType
 	:param str method: can be one of 'jaro_winkler', 'levenshtein', 'sentence_jaro_winkler', 'sentence_levenshtein'
-	:type treat_as_sen
+	:type treat_as_sentence: bool
+	:type case_sensitivity: float
+	:type first_char_weight: float
+	:type first_word_weight: float
+	:type
