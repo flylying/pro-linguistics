@@ -11,4 +11,6 @@ def find_most_similar_for_one_string(
 	:type string: str
 	:type candidates: list[str]
 	:type candidate_ids: list or NoneType
-	:type string_id: list
+	:type string_id: list or NoneType
+	:param str method: can be one of 'jaro_winkler', 'levenshtein', 'sentence_jaro_winkler', 'sentence_levenshtein'
+	:type treat_as_sen
