@@ -8,3 +8,7 @@ def find_most_similar_for_one_string(
 		case_sensitivity=1.0, first_char_weight=0.0, first_word_weight=0.0, num_results=1, echo=0
 ):
 	"""
+	:type string: str
+	:type candidates: list[str]
+	:type candidate_ids: list or NoneType
+	:type string_id: list
