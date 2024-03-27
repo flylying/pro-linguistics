@@ -22,4 +22,6 @@ def find_most_similar_for_one_string(
 	:rtype: pd.DataFrame
 	"""
 	echo = max(0, echo)
-	num_results = max(1, min(num_results, len(candidate
+	num_results = max(1, min(num_results, len(candidates)))
+	similarities = get_similarities(
+		string=string, strings=candidates, method=method, similarity_function=similarity_func
