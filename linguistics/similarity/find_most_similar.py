@@ -26,4 +26,8 @@ def find_most_similar_for_one_string(
 	similarities = get_similarities(
 		string=string, strings=candidates, method=method, similarity_function=similarity_function,
 		case_sensitivity=case_sensitivity, first_char_weight=first_char_weight, first_word_weight=first_word_weight,
-		echo=ech
+		echo=echo
+	)
+	if candidate_ids is None:
+		candidate_ids = list(range(len(candidates)))
+	df = pd.DataFrame({'string': str(string), 'candidat
