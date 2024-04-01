@@ -30,4 +30,6 @@ def find_most_similar_for_one_string(
 	)
 	if candidate_ids is None:
 		candidate_ids = list(range(len(candidates)))
-	df = pd.DataFrame({'string': str(string), 'candidat
+	df = pd.DataFrame({'string': str(string), 'candidate_id': candidate_ids, 'candidate': candidates, 'similarity': similarities})
+	if string_id is not None:
+		df['string_id'] = string_id
