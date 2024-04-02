@@ -33,3 +33,8 @@ def find_most_similar_for_one_string(
 	df = pd.DataFrame({'string': str(string), 'candidate_id': candidate_ids, 'candidate': candidates, 'similarity': similarities})
 	if string_id is not None:
 		df['string_id'] = string_id
+
+
+	df = df.sort_values(by='similarity', ascending=False)
+	df = df[~df['candidate_id'].duplicated()].head(num_results)
+	df['s
