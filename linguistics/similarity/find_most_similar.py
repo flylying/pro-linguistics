@@ -53,4 +53,10 @@ def find_most_similar(
 	:param str method: can be one of 'jaro_winkler', 'levenshtein', 'sentence_jaro_winkler', 'sentence_levenshtein'
 	:type treat_as_sentence: bool
 	:type first_char_weight: float
-	
+	:type first_word_weight: float
+	:type case_sensitivity: float
+	:rtype: pd.DataFrame
+	"""
+	echo = max(0, echo)
+	if string_ids is None:
+		string_ids = range(len(s
