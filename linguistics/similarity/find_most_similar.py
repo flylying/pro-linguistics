@@ -43,4 +43,9 @@ def find_most_similar_for_one_string(
 
 def find_most_similar(
 	strings, candidates, candidate_ids=None, string_ids=None, method='jaro_winkler', similarity_function=None,
-	case_sensitivity=1.0, fir
+	case_sensitivity=1.0, first_char_weight=0.0, first_word_weight=0.0, num_results=1, echo=0
+):
+	"""
+	:type strings: str or list[str]
+	:type candidates: list[str]
+	:ty
