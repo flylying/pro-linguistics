@@ -59,4 +59,8 @@ def find_most_similar(
 	"""
 	echo = max(0, echo)
 	if string_ids is None:
-		string_ids = range(len(s
+		string_ids = range(len(strings))
+
+	return pd.concat(list(ProgressBar.map(
+		function=lambda x: find_most_similar_for_one_string(
+			string=
