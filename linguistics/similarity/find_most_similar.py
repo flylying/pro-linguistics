@@ -42,4 +42,5 @@ def find_most_similar_for_one_string(
 
 
 def find_most_similar(
-	strings, candidates, candid
+	strings, candidates, candidate_ids=None, string_ids=None, method='jaro_winkler', similarity_function=None,
+	case_sensitivity=1.0, fir
