@@ -37,4 +37,9 @@ def find_most_similar_for_one_string(
 
 	df = df.sort_values(by='similarity', ascending=False)
 	df = df[~df['candidate_id'].duplicated()].head(num_results)
-	df['s
+	df['similarity_rank'] = range(1, df.shape[0] + 1)
+	return df
+
+
+def find_most_similar(
+	strings, candidates, candid
