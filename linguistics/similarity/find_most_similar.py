@@ -50,4 +50,7 @@ def find_most_similar(
 	:type candidates: list[str]
 	:type candidate_ids: list or NoneType
 	:type string_ids: list or NoneType
-	:param str method: can be one of 'jaro_winkler', 'lev
+	:param str method: can be one of 'jaro_winkler', 'levenshtein', 'sentence_jaro_winkler', 'sentence_levenshtein'
+	:type treat_as_sentence: bool
+	:type first_char_weight: float
+	
