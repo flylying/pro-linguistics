@@ -48,4 +48,6 @@ def find_most_similar(
 	"""
 	:type strings: str or list[str]
 	:type candidates: list[str]
-	:ty
+	:type candidate_ids: list or NoneType
+	:type string_ids: list or NoneType
+	:param str method: can be one of 'jaro_winkler', 'lev
