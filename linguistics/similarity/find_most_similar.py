@@ -69,4 +69,4 @@ def find_most_similar(
 			echo=echo-1
 		),
 		iterable=list(zip(strings, string_ids)), iterable_text=strings, echo=echo
-	))).reset_index(drop=True)
+	))).reset_index(drop=True)[['string_id', 'string', 'candidate_id', 'candidate', 'similarity_rank', 'similarity']]
