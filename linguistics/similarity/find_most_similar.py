@@ -65,4 +65,8 @@ def find_most_similar(
 		function=lambda x: find_most_similar_for_one_string(
 			string=x[0], string_id=x[1], candidates=candidates, candidate_ids=candidate_ids,
 			method=method, similarity_function=similarity_function, case_sensitivity=case_sensitivity,
-			first_char_weight=first_char_weight, first_word_weight=first_word_weight, num_results=num_result
+			first_char_weight=first_char_weight, first_word_weight=first_word_weight, num_results=num_results,
+			echo=echo-1
+		),
+		iterable=list(zip(strings, string_ids)), iterable_text=strings, echo=echo
+	))).reset_index(drop=True)
