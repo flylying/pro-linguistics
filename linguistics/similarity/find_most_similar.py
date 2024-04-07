@@ -64,4 +64,5 @@ def find_most_similar(
 	return pd.concat(list(ProgressBar.map(
 		function=lambda x: find_most_similar_for_one_string(
 			string=x[0], string_id=x[1], candidates=candidates, candidate_ids=candidate_ids,
-			method=method, similarity_function=similarity_func
+			method=method, similarity_function=similarity_function, case_sensitivity=case_sensitivity,
+			first_char_weight=first_char_weight, first_word_weight=first_word_weight, num_results=num_result
