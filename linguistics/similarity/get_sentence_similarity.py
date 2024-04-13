@@ -8,4 +8,10 @@ def get_sentence_distance(words1, words2, first_char_weight=0, case_sensitivity=
 	:type words2: list[str] or str
 	:type first_char_weight: float
 	:type case_sensitivity: float
-	:
+	:type method: str
+	:rtype: float
+	"""
+	if isinstance(words1, str):
+		words1 = words1.split()
+	elif not isinstance(words1, list):
+		raise TypeError('w
