@@ -35,4 +35,12 @@ def get_sentence_distance(words1, words2, first_char_weight=0, case_sensitivity=
 			normalized_distance = 1 - get_string_similarity(
 				s1=w1, s2=w2, method=method,
 				first_char_weight=first_char_weight,
-				case_sensitivity=case_sensitiv
+				case_sensitivity=case_sensitivity
+			)
+			m[i][j] = min(
+				m[i - 1, j - 1] + normalized_distance,
+				m[i - 1, j] + 1,
+				m[i, j - 1] + 1
+			)
+
+	return m[size
