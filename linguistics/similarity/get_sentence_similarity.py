@@ -14,4 +14,9 @@ def get_sentence_distance(words1, words2, first_char_weight=0, case_sensitivity=
 	if isinstance(words1, str):
 		words1 = words1.split()
 	elif not isinstance(words1, list):
-		raise TypeError('w
+		raise TypeError('words1 should either be a string or a list!')
+
+	if isinstance(words2, str):
+		words2 = words2.split()
+	elif not isinstance(words2, list):
+		raise TypeErro
