@@ -43,4 +43,8 @@ def get_sentence_distance(words1, words2, first_char_weight=0, case_sensitivity=
 				m[i, j - 1] + 1
 			)
 
-	return m[size
+	return m[size_x - 1, size_y - 1]
+
+
+def get_sentence_similarity(
+		words1, words2, first_char_weight=0, first_word_weight=0, case_sensitivity=1, method='
