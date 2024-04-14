@@ -23,4 +23,9 @@ def get_sentence_distance(words1, words2, first_char_weight=0, case_sensitivity=
 
 	size_x = len(words1) + 1
 	size_y = len(words2) + 1
-	m = np.zeros((size_x, size_y)
+	m = np.zeros((size_x, size_y))
+	# create_matrix(h=size_x, w=size_y, obj=0)
+
+	for i in range(size_x): m[i, 0] = i
+	for j in range(size_y): m[0, j] = j
+	for i in
