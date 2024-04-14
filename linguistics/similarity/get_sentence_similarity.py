@@ -28,4 +28,8 @@ def get_sentence_distance(words1, words2, first_char_weight=0, case_sensitivity=
 
 	for i in range(size_x): m[i, 0] = i
 	for j in range(size_y): m[0, j] = j
-	for i in
+	for i in range(1, size_x):
+		for j in range(1, size_y):
+			w1 = words1[i - 1]
+			w2 = words2[j - 1]
+			normalized_distance = 1
