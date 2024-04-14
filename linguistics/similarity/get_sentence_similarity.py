@@ -53,4 +53,10 @@ def get_sentence_similarity(
 	:type words1: list[str] or str
 	:type words2: list[str] or str
 	:type first_char_weight: float
-	:type first_word_weig
+	:type first_word_weight: float
+	:type case_sensitivity: float
+	:type method: str
+	:rtype: float
+	"""
+	if isinstance(words1, str):
+		words1 = words1.
