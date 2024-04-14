@@ -47,4 +47,10 @@ def get_sentence_distance(words1, words2, first_char_weight=0, case_sensitivity=
 
 
 def get_sentence_similarity(
-		words1, words2, first_char_weight=0, first_word_weight=0, case_sensitivity=1, method='
+		words1, words2, first_char_weight=0, first_word_weight=0, case_sensitivity=1, method='jaro_winkler'
+):
+	"""
+	:type words1: list[str] or str
+	:type words2: list[str] or str
+	:type first_char_weight: float
+	:type first_word_weig
