@@ -82,4 +82,7 @@ def get_sentence_similarity(
 
 	if first_word_weight==0:
 		return similarity
-	elif first_
+	elif first_word_weight<0:
+		raise ValueError('first_word_weight cannot be negative!')
+	else:
+		first_word_similarity = get_string_similarity(
