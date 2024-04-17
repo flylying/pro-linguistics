@@ -66,4 +66,11 @@ def get_sentence_similarity(
 	if isinstance(words2, str):
 		words2 = words2.split()
 	elif not isinstance(words2, list):
-		raise TypeError('words2 should either be a string or a 
+		raise TypeError('words2 should either be a string or a list')
+
+	if len(words1)==0 and len(words2)==0:
+		return 1.0
+	elif len(words1)==0 or len(words2)==0:
+		return 0.0
+
+	d
