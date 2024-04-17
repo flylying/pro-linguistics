@@ -75,4 +75,11 @@ def get_sentence_similarity(
 
 	distance = get_sentence_distance(
 		words1=words1, words2=words2, method=method,
-		case_sensitivity=case_sensitivity, first_char_weight=firs
+		case_sensitivity=case_sensitivity, first_char_weight=first_char_weight
+	)
+
+	similarity = 1 - distance/max(len(words1), len(words2))
+
+	if first_word_weight==0:
+		return similarity
+	elif first_
