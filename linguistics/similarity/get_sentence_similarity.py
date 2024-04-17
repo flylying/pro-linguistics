@@ -73,4 +73,6 @@ def get_sentence_similarity(
 	elif len(words1)==0 or len(words2)==0:
 		return 0.0
 
-	d
+	distance = get_sentence_distance(
+		words1=words1, words2=words2, method=method,
+		case_sensitivity=case_sensitivity, first_char_weight=firs
