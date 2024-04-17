@@ -86,3 +86,5 @@ def get_sentence_similarity(
 		raise ValueError('first_word_weight cannot be negative!')
 	else:
 		first_word_similarity = get_string_similarity(
+			s1=words1[0], s2=words2[0], method=method,
+			case_sensitivity=case_sensitivity, first_char_weight=first_char_weight
