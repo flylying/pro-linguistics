@@ -59,4 +59,8 @@ def get_sentence_similarity(
 	:rtype: float
 	"""
 	if isinstance(words1, str):
-		words1 = words1.
+		words1 = words1.split()
+	elif not isinstance(words1, list):
+		raise TypeError('words1 should either be a string or a list!')
+
+	if isinstance
