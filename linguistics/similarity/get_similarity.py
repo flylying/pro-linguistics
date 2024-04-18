@@ -35,3 +35,33 @@ def get_similarity(
 		)
 
 	else:
+		return get_string_similarity(
+			s1=s1, s2=s2, method=method, first_char_weight=first_char_weight, case_sensitivity=case_sensitivity
+		)
+
+
+def get_similarities(
+		string, strings, method='jaro_winkler', similarity_function=None,
+		case_sensitivity=1.0,first_char_weight=0.0, first_word_weight=0.0, echo=0
+):
+	"""
+	:type string: str
+	:type strings: list[str]
+	:type treat_as_sentence: bool
+	:param str method: can be one of 'jaro_winkler', 'levenshtein', 'sentence_jaro_winkler', 'sentence_levenshtein'
+	:type case_sensitivity: float
+	:type first_char_weight: float
+	:type first_word_weight: float
+	:rtype:
+	"""
+	echo = max(0, echo)
+	string = str(string)
+	text = string + ' ? '
+	return list(ProgressBar.map(
+		function=lambda x: get_similarity(
+			s1=string, s2=x, method=method, similarity_function=similarity_function,
+			first_char_weight=first_char_weight, case_sensitivity=case_sensitivity, first_word_weight=first_word_weight
+		),
+		iterable=strings, iterable_text=strings, text=text, echo=echo
+	))
+
