@@ -23,4 +23,6 @@ def get_string_similarity(s1, s2, case_sensitivity=1.0, first_char_weight=0.0, m
 		raise ValueError('initial_weight cannot be negative!')
 
 	if case_sensitivity==0:
-		string_similarity = _get_similarity
+		string_similarity = _get_similarity(s1, s2, case_sensitive=False)
+		if first_char_weight>0 and len(s1)>0 and len(s2)>0:
+			initials_equal = int(s1[0].lower() =
