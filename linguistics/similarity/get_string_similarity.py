@@ -28,4 +28,8 @@ def get_string_similarity(s1, s2, case_sensitivity=1.0, first_char_weight=0.0, m
 			initials_equal = int(s1[0].lower() == s2[0].lower())
 		else:
 			initials_equal = 0
-		similarity = (string_similarity + initials_equal * first_char_weight) / (1 + first_char_weigh
+		similarity = (string_similarity + initials_equal * first_char_weight) / (1 + first_char_weight)
+
+	elif case_sensitivity==1:
+		string_similarity = _get_similarity(s1, s2, case_sensitive=True)
+		if first_char_weight>0 and len(s1)>0 and len
