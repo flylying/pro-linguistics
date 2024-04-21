@@ -32,4 +32,8 @@ def get_string_similarity(s1, s2, case_sensitivity=1.0, first_char_weight=0.0, m
 
 	elif case_sensitivity==1:
 		string_similarity = _get_similarity(s1, s2, case_sensitive=True)
-		if first_char_weight>0 and len(s1)>0 and len
+		if first_char_weight>0 and len(s1)>0 and len(s2)>0:
+			initials_equal = int(s1[0] == s2[0])
+		else:
+			initials_equal = 0
+		similarity = (string_similarity + initials_equal * 
