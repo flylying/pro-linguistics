@@ -17,4 +17,10 @@ def get_string_similarity(s1, s2, case_sensitivity=1.0, first_char_weight=0.0, m
 	elif method=='levenshtein':
 		_get_similarity = get_levenshtein_similarity
 	else:
-		raise ValueError(f'{method} is unknown
+		raise ValueError(f'{method} is unknown!')
+
+	if first_char_weight<0:
+		raise ValueError('initial_weight cannot be negative!')
+
+	if case_sensitivity==0:
+		string_similarity = _get_similarity
