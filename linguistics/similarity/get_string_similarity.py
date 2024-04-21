@@ -13,4 +13,8 @@ def get_string_similarity(s1, s2, case_sensitivity=1.0, first_char_weight=0.0, m
 	s2 = str(s2)
 
 	if method=='jaro_winkler':
-		_get_similarity = get_jaro
+		_get_similarity = get_jaro_winkler_similarity
+	elif method=='levenshtein':
+		_get_similarity = get_levenshtein_similarity
+	else:
+		raise ValueError(f'{method} is unknown
