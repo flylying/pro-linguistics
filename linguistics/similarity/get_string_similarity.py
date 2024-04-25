@@ -46,4 +46,7 @@ def get_string_similarity(s1, s2, case_sensitivity=1.0, first_char_weight=0.0, m
 			initials_equal = case_sensitivity*int(s1[0] == s2[0]) + (1-case_sensitivity)*int(s1[0].lower() == s2[0].lower())
 		else:
 			initials_equal = 0
-		similarity = (string_similarity + i
+		similarity = (string_similarity + initials_equal * first_char_weight) / (1 + first_char_weight)
+
+	else:
+		raise ValueError('case_sensitivity should be between 0 and
