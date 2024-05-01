@@ -9,4 +9,5 @@ def get_levenshtein_distance(s1, s2, case_sensitive=True):
 
 
 def get_levenshtein_similarity(s1, s2, case_sensitive=True):
-	return 1-get_levens
+	return 1-get_levenshtein_distance(s1, s2, case_sensitive=case_sensitive)/max(len(s1), len(s2))
+
