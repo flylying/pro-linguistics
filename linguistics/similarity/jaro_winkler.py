@@ -9,4 +9,5 @@ def get_jaro_winkler_similarity(s1, s2, case_sensitive=True):
 
 
 def get_jaro_winkler_distance(s1, s2, case_sensitive=True):
-	return max(len(s1), len(s2))*(1-get_jaro_winkler
+	return max(len(s1), len(s2))*(1-get_jaro_winkler_similarity(s1, s2, case_sensitive=case_sensitive))
+
